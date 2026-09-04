@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The World of Physics</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- MathJax for rendering professional LaTeX equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        
+        <!-- GLOBAL BACKGROUND: 2D Reactor Core -->
+        <div class="reactor-core" id="reactor-core">
+            <div class="steam-overlay"></div>
+            <div class="radial-pipes">
+                <div class="pipe pipe-1"></div>
+                <div class="pipe pipe-2"></div>
+                <div class="pipe pipe-3"></div>
+                <div class="pipe pipe-4"></div>
+                <div class="pipe pipe-5"></div>
+                <div class="pipe pipe-6"></div>
+                <div class="pipe pipe-7"></div>
+                <div class="pipe pipe-8"></div>
+            </div>
+            <div class="outer-bronze-ring">
+                <div class="inner-cyan-vortex">
+                    <div class="vortex-fins"></div>
+                    <div class="core-amber-glow"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GLOBAL UI: Volume Control -->
+        <div id="volume-control" class="hidden">
+            <label for="bgm-volume">MUSIC VOL</label>
+            <input type="range" id="bgm-volume" min="0" max="1" step="0.01" value="0.4">
+        </div>
+        
+        <!-- Slide 1: Real-Life Lab Door (Double Locked) -->
+        <section class="slide active" id="slide-1">
+            <div class="door-frame">
+                <div class="door door-left">
+                    <div class="hazard-stripes"></div>
+                    <div class="door-detail"></div>
+                </div>
+                <div class="door door-right">
+                    <div class="hazard-stripes"></div>
+                    <div class="door-detail"></div>
+                </div>
+            </div>
+            
+            <div class="login-panel" id="login-panel">
+                <div class="panel-header">
+                    <span class="status-dot"></span>
+                    DEPARTMENT OF THEORETICAL PHYSICS - SECTOR 7G
+                </div>
+                <h2>SECURITY OVERRIDE REQUIRED</h2>
+                
+                <div class="auth-grid">
+                    <div class="auth-module">
+                        <div class="module-title">1. INSERT CLEARANCE CARD</div>
+                        <div class="card-reader" id="dropzone">
+                            <div class="reader-slot"></div>
+                            <span id="reader-status">AWAITING CARD</span>
+                        </div>
+                        <div class="keycard" id="keycard" draggable="true">
+                            <div class="chip"></div>
+                            <div class="card-text">LEVEL 5<br>STAFF</div>
+                        </div>
+                    </div>
+                    <div class="auth-module">
+                        <div class="module-title">2. BIOMETRIC SCAN</div>
+                        <div class="fingerprint-scanner" id="fingerprint-btn">
+                            <div class="scan-line"></div>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v4h-2zm0 6h2v2h-2z"/>
+                                <path d="M12 7c-2.76 0-5 2.24-5 5 0 .55.45 1 1 1s1-.45 1-1c0-1.65 1.35-3 3-3s3 1.35 3 3c0 1.25-.83 2.31-2.02 2.76-.51.19-.78.75-.6 1.26.17.48.66.72 1.13.58C15.86 15.35 17 13.8 17 12c0-2.76-2.24-5-5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="status-msg" id="bio-status">REQUIREMENT NOT MET</div>
+                    </div>
+                </div>
+                <div class="system-msg" id="system-msg">AWAITING DUAL AUTHENTICATION...</div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Supernova to Atom & Hub -->
+        <section class="slide" id="slide-2">
+            <div class="core-particle" id="core-particle"></div>
+            
+            <div class="intro-reveal-group" id="intro-reveal-group">
+                <div class="physics-symbol" id="physics-symbol">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="6" fill="#00d2ff" class="nucleus"/>
+                        <ellipse cx="50" cy="50" rx="45" ry="15" class="orbit" transform="rotate(0 50 50)"/>
+                        <ellipse cx="50" cy="50" rx="45" ry="15" class="orbit" transform="rotate(60 50 50)"/>
+                        <ellipse cx="50" cy="50" rx="45" ry="15" class="orbit" transform="rotate(120 50 50)"/>
+                    </svg>
+                </div>
+                <h1 class="title-text">THE WORLD OF PHYSICS</h1>
+            </div>
+
+            <div class="nav-hub" id="nav-hub">
+                <h3>SELECT EXPERIMENT PARAMETERS</h3>
+                <div class="hub-grid">
+                    <div class="hub-item" data-topic="velocity" data-slide="slide-velocity">
+                        <div class="item-icon">⏱️</div><div class="item-text">Velocity Dynamics</div>
+                    </div>
+                    <div class="hub-item" data-topic="gravity" data-slide="slide-gravity">
+                        <div class="item-icon">🪐</div><div class="item-text">Gravitational Fields</div>
+                    </div>
+                    <div class="hub-item" data-topic="force" data-slide="slide-force">
+                        <div class="item-icon">⚙️</div><div class="item-text">Applied Force</div>
+                    </div>
+                    <div class="hub-item" data-topic="emag" data-slide="slide-emag">
+                        <div class="item-icon">⚡</div><div class="item-text">Electromagnetism</div>
+                    </div>
+                    <div class="hub-item" data-topic="laser" data-slide="slide-laser">
+                        <div class="item-icon">☄️</div><div class="item-text">Coherent Light (Lasers)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic Slides (Equations) -->
+        <section class="slide equation-slide" id="slide-velocity">
+            <div class="content-box">
+                <div class="glass-barrier-sheen"></div>
+                <button class="back-btn">&larr; TERMINATE EXPERIMENT</button>
+                <h2>Kinematic Velocity</h2>
+                <div class="equation">$$ \mathbf{v} = \lim_{\Delta t \to 0} \frac{\Delta \mathbf{d}}{\Delta t} = \frac{d\mathbf{d}}{dt} $$</div>
+                <p>Velocity is fundamentally a vector quantity, meaning it encapsulates both the magnitude (speed) and the precise direction of a body in motion. In classical mechanics, it is the first derivative of position with respect to time.</p>
+            </div>
+        </section>
+
+        <section class="slide equation-slide" id="slide-gravity">
+            <div class="content-box">
+                <div class="glass-barrier-sheen"></div>
+                <button class="back-btn">&larr; TERMINATE EXPERIMENT</button>
+                <h2>Universal Gravitation</h2>
+                <div class="equation">$$ F = G \frac{m_1 m_2}{r^2} $$</div>
+                <p>Newton's Law of Universal Gravitation posits that the gravitational force between two masses is directly proportional to the product of their masses and inversely proportional to the square of the distance between their centers.</p>
+            </div>
+        </section>
+
+        <section class="slide equation-slide" id="slide-force">
+            <div class="content-box">
+                <div class="glass-barrier-sheen"></div>
+                <button class="back-btn">&larr; TERMINATE EXPERIMENT</button>
+                <h2>Newtonian Force</h2>
+                <div class="equation">$$ \mathbf{F}_{net} = \frac{d\mathbf{p}}{dt} = m \cdot \mathbf{a} $$</div>
+                <p>Derived from Newton's Second Law, Force is the fundamental agent of change in the universe. It dictates that the net force applied to a body equals the rate of change of its momentum.</p>
+            </div>
+        </section>
+
+        <section class="slide equation-slide" id="slide-emag">
+            <div class="content-box">
+                <div class="glass-barrier-sheen"></div>
+                <button class="back-btn">&larr; TERMINATE EXPERIMENT</button>
+                <h2>The Lorentz Force</h2>
+                <div class="equation">$$ \mathbf{F} = q\mathbf{E} + q(\mathbf{v} \times \mathbf{B}) $$</div>
+                <p>Electromagnetism unifies electricity and magnetism into a single fundamental interaction. The Lorentz force law calculates the total force exerted on a charged particle moving through combined electric and magnetic fields.</p>
+            </div>
+        </section>
+
+        <section class="slide equation-slide" id="slide-laser">
+            <div class="content-box">
+                <div class="glass-barrier-sheen"></div>
+                <button class="back-btn">&larr; TERMINATE EXPERIMENT</button>
+                <h2>Photon Energy (Lasers)</h2>
+                <div class="equation">$$ E = h \nu = \frac{hc}{\lambda} $$</div>
+                <p>LASER relies on the quantum nature of light. The Planck-Einstein relation demonstrates that the energy of a photon is directly proportional to its frequency. This concentration of energy allows for high-yield directed-energy initiation.</p>
+            </div>
+        </section>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
